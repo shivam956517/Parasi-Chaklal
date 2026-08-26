@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ग्राम पंचायत परासी चकलाल</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-dark:#0f5132;
+    --green:#1b7a45;
+    --green-light:#e8f3ec;
+    --cream:#faf8f3;
+    --gold:#c9932e;
+    --text:#233229;
+    --muted:#6b7a70;
+    --border:#e1e6e0;
+    --white:#ffffff;
+    --shadow: 0 4px 18px rgba(15,81,50,0.08);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Hind', sans-serif;
+    color:var(--text);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  h1,h2,h3,h4,.brand-name,.logo-text{font-family:'Hind', sans-serif; font-weight:700;}
+  .eyebrow{font-family:'Poppins',sans-serif;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  /* Top bar */
+  .topbar{
+    background:var(--green-dark);
+    color:#eafaf0;
+    font-size:0.85rem;
+  }
+  .topbar-inner{
+    max-width:1200px; margin:0 auto; padding:8px 24px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;
+  }
+  .topbar-inner span{display:flex; align-items:center; gap:6px; opacity:0.95;}
+  .topbar-right{display:flex; gap:20px;}
+
+  /* Header / nav */
+  header.main{
+    background:var(--white);
+    border-bottom:1px solid var(--border);
+    position:sticky; top:0; z-index:50;
+  }
+  .header-inner{
+    max-width:1200px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .logo-circle{
+    width:58px; height:58px; border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #f4fbf6, #dcefe1);
+    border:2px solid var(--green);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; overflow:hidden; padding:5px;
+  }
+  .logo-circle svg{width:100%; height:100%;}
+  .logo-circle svg .sun{fill:#e0a728; color:#e0a728;}
+  .logo-circle svg .roof{fill:#c0503a;}
+  .logo-circle svg .wall{fill:#fdfaf3;}
+  .logo-circle svg .water{stroke:#4fa7bd;}
+  .logo-circle svg .ground{stroke:#b98a4f;}
+  .logo-circle svg .leaf{fill:var(--green);}
+  .logo-circle svg .trunk{fill:#7a4d2b;}
+  .brand-text .logo-text{font-size:1.35rem; color:var(--green-dark); line-height:1.15;}
+  .brand-text .logo-sub{font-size:0.8rem; color:var(--muted); margin-top:2px;}
+
+  nav.primary{display:flex; align-items:center; gap:4px; flex-wrap:wrap;}
+  nav.primary a{
+    padding:10px 16px; border-radius:8px; font-weight:600; font-size:0.95rem;
+    color:var(--text); display:flex; align-items:center; gap:6px; white-space:nowrap;
+    transition:background .2s, color .2s;
+  }
+  nav.primary a:hover{background:var(--green-light); color:var(--green-dark);}
+  nav.primary a.active{background:var(--green); color:#fff;}
+  .menu-toggle{display:none; font-size:1.6rem; background:none; border:none; color:var(--green-dark); cursor:pointer;}
+
+  /* Breadcrumb */
+  .breadcrumb{
+    background:var(--green-light); border-bottom:1px solid var(--border);
+    font-size:0.9rem; color:var(--muted);
+  }
+  .breadcrumb-inner{max-width:1200px; margin:0 auto; padding:10px 24px; display:flex; gap:8px; align-items:center;}
+  .breadcrumb-inner b{color:var(--green-dark);}
+
+  main{max-width:1200px; margin:0 auto; padding:36px 24px 64px;}
+  .page{display:none;}
+  .page.active{display:block;}
+
+  .section-title{
+    text-align:center; color:var(--green-dark); font-size:1.9rem; margin-bottom:6px;
+  }
+  .section-divider{
+    width:70px; height:3px; background:var(--gold); margin:0 auto 34px; border-radius:2px; position:relative;
+  }
+
+  /* HOME hero */
+  .hero{
+    display:grid; grid-template-columns: 1.05fr 1fr; gap:36px; align-items:center; margin-bottom:40px;
+  }
+  .hero-card{
+    position:relative; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+    background:linear-gradient(135deg,#123d27,#1b7a45 60%);
+    color:#fff; min-height:340px; display:flex; align-items:flex-end;
+  }
+  .hero-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;}
+  .hero-card .overlay{position:relative; padding:32px; z-index:2;}
+  .hero-card .overlay p.eyebrow{color:#bfe8cf; font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px;}
+  .hero-card h1{font-size:2rem; line-height:1.25; margin-bottom:14px;}
+  .hero-card p.desc{font-size:0.95rem; max-width:440px; color:#e8f5ec; margin-bottom:18px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--gold); color:#fff; padding:11px 22px; border-radius:8px;
+    font-weight:600; border:none; cursor:pointer; font-size:0.95rem; transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-2px); box-shadow:0 6px 16px rgba(201,147,46,0.35);}
+  .btn.outline{background:transparent; border:2px solid var(--green); color:var(--green-dark);}
+
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .stat-card{
+    background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px;
+    box-shadow:var(--shadow); text-align:center;
+  }
+  .stat-card .num{font-size:1.7rem; font-weight:700; color:var(--green-dark);}
+  .stat-card .lbl{color:var(--muted); font-size:0.85rem; margin-top:4px;}
+  .stat-card .icon{font-size:1.6rem; margin-bottom:8px;}
+
+  .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:28px; margin-top:40px;}
+  .panel{
+    background:var(--white); border:1px solid var(--border); border-radius:14px; padding:24px;
+    box-shadow:var(--shadow);
+  }
+  .panel h3{color:var(--green-dark); font-size:1.15rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;}
+  .notice-item{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+    padding:12px 0; border-bottom:1px dashed var(--border); font-size:0.92rem;
+  }
+  .notice-item:last-child{border-bottom:none;}
+  .notice-item .tag{
+    background:#fce8e8; color:#c23b3b; font-size:0.65rem; font-weight:700; padding:2px 7px;
+    border-radius:4px; margin-left:6px;
+  }
+  .notice-date{color:var(--muted); font-size:0.8rem; white-space:nowrap;}
+  .scheme-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;}
+  .scheme-item{
+    background:var(--green-light); border-radius:10px; padding:14px; display:flex; gap:10px; align-items:center;
+    font-size:0.88rem; font-weight:600; color:var(--green-dark);
+  }
+
+  /* ABOUT page */
+  .about-hero{
+    display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start; margin-bottom:40px;
+  }
+  .about-hero img{border-radius:14px; box-shadow:var(--shadow);}
+  .about-hero .content h3{color:var(--green-dark); margin-bottom:10px; font-size:1.25rem;}
+  .about-hero .content p{margin-bottom:14px; color:#40514a;}
+
+  .info-table{width:100%; border-collapse:collapse; font-size:0.92rem;}
+  .info-table tr{border-bottom:1px solid var(--border);}
+  .info-table tr:last-child{border-bottom:none;}
+  .info-table td{padding:9px 4px;}
+  .info-table td:first-child{color:var(--muted); width:45%;}
+  .info-table td:last-child{font-weight:600; color:var(--text);}
+
+  .check-list li{
+    display:flex; gap:10px; align-items:flex-start; padding:8px 0; font-size:0.92rem;
+  }
+  .check-list li:before{content:"✓"; color:#fff; background:var(--green); border-radius:50%; width:20px; height:20px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:0.7rem; margin-top:2px;}
+
+  .area-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .area-card{
+    background:var(--white); border:1px solid var(--border); border-radius:12px; padding:22px 14px;
+    text-align:center; box-shadow:var(--shadow); transition:transform .15s;
+  }
+  .area-card:hover{transform:translateY(-4px);}
+  .area-card .icon{font-size:1.7rem; margin-bottom:10px;}
+  .area-card .lbl{font-weight:600; color:var(--green-dark); font-size:0.95rem;}
+
+  .achieve-strip{
+    background:var(--green-dark); border-radius:14px; padding:24px 28px; margin-top:44px;
+    display:flex; flex-wrap:wrap; align-items:center; gap:28px; color:#fff;
+  }
+  .achieve-strip .title{display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05rem; flex-shrink:0;}
+  .achieve-items{display:flex; flex-wrap:wrap; gap:22px; flex:1;}
+  .achieve-item{display:flex; align-items:center; gap:8px; font-size:0.85rem; color:#e6f5ea; text-align:left;}
+  .achieve-item .aicon{font-size:1.2rem;}
+
+  /* CONTACT page */
+  .contact-grid{display:grid; grid-template-columns: 0.85fr 1fr 1fr; gap:24px;}
+  .contact-list li{
+    display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--border);
+  }
+  .contact-list li:last-child{border-bottom:none;}
+  .contact-list .cicon{
+    width:38px; height:38px; border-radius:50%; background:var(--green-light); color:var(--green-dark);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1rem;
+  }
+  .contact-list .clabel{font-weight:600; font-size:0.9rem; color:var(--text);}
+  .contact-list .cval{font-size:0.85rem; color:var(--muted); margin-top:2px;}
+
+  .map-box{
+    height:190px; border-radius:12px; background:
+      linear-gradient(135deg,#dcefe1,#c7e6d1);
+    display:flex; align-items:center; justify-content:center; color:var(--green-dark);
+    font-weight:600; margin-bottom:16px; border:1px solid var(--border); position:relative; overflow:hidden;
+  }
+  .map-box:before{content:"📍"; font-size:2rem; position:absolute;}
+  .map-box span{margin-top:60px; background:#fff; padding:4px 10px; border-radius:6px; box-shadow:var(--shadow); font-size:0.8rem;}
+
+  form .field{margin-bottom:14px;}
+  form label{display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; color:var(--text);}
+  form input, form textarea{
+    width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:8px;
+    font-family:inherit; font-size:0.9rem; background:var(--cream);
+  }
+  form textarea{resize:vertical; min-height:90px;}
+  form input:focus, form textarea:focus{outline:2px solid var(--green); outline-offset:1px; background:#fff;}
+  .captcha-row{display:flex; gap:10px; align-items:center;}
+  .captcha-box{
+    background:var(--green-light); padding:10px 22px; border-radius:8px; font-weight:700; letter-spacing:3px; color:var(--green-dark);
+  }
+
+  /* REPRESENTATIVES page */
+  .rep-main-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:38px;}
+  .rep-card{
+    background:var(--white); border:1px solid var(--border); border-radius:14px; padding:20px; text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .rep-avatar{
+    width:74px; height:74px; border-radius:50%; margin:0 auto 12px; background:var(--green-light);
+    display:flex; align-items:center; justify-content:center; font-size:1.8rem; border:3px solid var(--green-light);
+  }
+  .rep-role{font-size:0.78rem; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:0.5px;}
+  .rep-name{font-size:1.05rem; font-weight:700; color:var(--green-dark); margin:4px 0 8px;}
+  .rep-contact{font-size:0.8rem; color:var(--muted); display:flex; flex-direction:column; gap:3px;}
+
+  .ward-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:38px;}
+  .ward-card{
+    background:var(--white); border:1px solid var(--border); border-radius:12px; padding:14px;
+    display:flex; align-items:center; gap:12px; box-shadow:var(--shadow);
+  }
+  .ward-avatar{
+    width:46px; height:46px; border-radius:50%; background:var(--green-light); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  }
+  .ward-no{font-size:0.72rem; color:var(--gold); font-weight:700;}
+  .ward-name{font-size:0.9rem; font-weight:600; color:var(--text);}
+  .ward-phone{font-size:0.75rem; color:var(--muted);}
+
+  table.committee{width:100%; border-collapse:collapse; font-size:0.9rem;}
+  table.committee th{
+    background:var(--green); color:#fff; text-align:right; padding:10px 12px; font-weight:600;
+  }
+  table.committee td{padding:10px 12px; border-bottom:1px solid var(--border); text-align:right;}
+  table.committee tr:nth-child(even) td{background:var(--green-light);}
+
+  /* Footer */
+  footer{background:var(--green-dark); color:#dcefe2; margin-top:60px;}
+  .footer-inner{
+    max-width:1200px; margin:0 auto; padding:44px 24px 20px;
+    display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:30px;
+  }
+  .footer-brand{display:flex; gap:12px; align-items:flex-start;}
+  .footer-brand .logo-circle{background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.35);}
+  .footer-brand .logo-circle svg .sun{fill:#f2c14e;}
+  .footer-brand .logo-circle svg .roof{fill:#e8956b;}
+  .footer-brand .logo-circle svg .wall{fill:#f4ede0;}
+  .footer-brand .logo-circle svg .water{fill:#8fd0e0;}
+  .footer-brand .logo-circle svg .ground{fill:#c9a26a;}
+  .footer-brand .logo-circle svg .leaf{fill:#4fae6f;}
+  .footer-brand .logo-circle svg .trunk{fill:#8a5a34;}
+  .footer-brand h4{color:#fff; font-size:1.05rem; margin-bottom:6px;}
+  .footer-brand p{font-size:0.82rem; color:#bcdcc4; line-height:1.5;}
+  footer h5{color:#fff; font-size:0.95rem; margin-bottom:14px;}
+  footer ul li{margin-bottom:9px; font-size:0.85rem; color:#bcdcc4;}
+  footer ul li a:hover{color:#fff;}
+  .social-row{display:flex; gap:10px; margin-top:14px;}
+  .social-row a{
+    width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center; font-size:0.95rem;
+  }
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.15); text-align:center; padding:16px 24px;
+    font-size:0.8rem; color:#a9cdb3;
+  }
+
+  .whatsapp-fab{
+    position:fixed; bottom:24px; right:24px; width:56px; height:56px; border-radius:50%;
+    background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem; box-shadow:0 6px 18px rgba(0,0,0,0.25); z-index:60; cursor:pointer;
+  }
+
+  @media (max-width: 980px){
+    .hero{grid-template-columns:1fr;}
+    .two-col{grid-template-columns:1fr;}
+    .about-hero{grid-template-columns:1fr;}
+    .rep-main-grid{grid-template-columns:repeat(2,1fr);}
+    .ward-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+    .area-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-inner{grid-template-columns:1fr 1fr;}
+    nav.primary{
+      position:absolute; top:100%; left:0; right:0; background:#fff; flex-direction:column;
+      border-bottom:1px solid var(--border); padding:8px; display:none; box-shadow:var(--shadow);
+    }
+    nav.primary.open{display:flex;}
+    .menu-toggle{display:block;}
+    .scheme-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .rep-main-grid, .ward-grid, .area-grid, .scheme-grid{grid-template-columns:1fr 1fr;}
+    .stat-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>📍 ग्राम पंचायत परासी चकलाल, तहसील सलेमपुर, जनपद देवरिया, उत्तर प्रदेश</span>
+    <span class="topbar-right">
+      <span>📞 9565174789</span>
+      <span>✉️ gpparasi@gmail.com</span>
+    </span>
+  </div>
+</div>
+
+<header class="main">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo-circle">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="sun" cx="74" cy="20" r="9"/>
+          <g class="sun" stroke="currentColor" stroke-width="2">
+            <line x1="74" y1="4" x2="74" y2="9"/>
+            <line x1="90" y1="20" x2="85" y2="20"/>
+            <line x1="86.5" y1="8" x2="83" y2="11.5"/>
+          </g>
+          <path class="water" d="M6,86 Q17,80 28,86 T50,86 T72,86 T94,86" fill="none" stroke-width="3" stroke-linecap="round"/>
+          <line class="ground" x1="4" y1="92" x2="96" y2="92" stroke-width="2"/>
+          <polygon class="roof" points="54,58 68,42 82,58"/>
+          <rect class="wall" x="58" y="58" width="20" height="18" rx="1"/>
+          <rect class="wall" x="66" y="66" width="6" height="10"/>
+          <rect class="trunk" x="20" y="54" width="6" height="24"/>
+          <circle class="leaf" cx="23" cy="44" r="14"/>
+          <circle class="leaf" cx="13" cy="52" r="10"/>
+          <circle class="leaf" cx="33" cy="52" r="10"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="logo-text">ग्राम पंचायत परासी चकलाल</div>
+        <div class="logo-sub">तहसील सलेमपुर, जनपद देवरिया, उत्तर प्रदेश</div>
+      </div>
+    </div>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <nav class="primary" id="primaryNav">
+      <a href="#" data-page="home" class="active">🏠 होम</a>
+      <a href="#" data-page="about">ℹ️ ग्राम पंचायत के बारे में</a>
+      <a href="#" data-page="reps">👥 जनप्रतिनिधि</a>
+      <a href="#" data-page="notices">🔔 सूचनाऐं</a>
+      <a href="#" data-page="contact">📞 संपर्क करें</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <span id="crumbHome">🏠 होम</span>
+    <span id="crumbSep" style="display:none;">›</span>
+    <b id="crumbCurrent"></b>
+  </div>
+</div>
+
+<main>
+
+  <!-- HOME PAGE -->
+  <section class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=80" alt="ग्राम पंचायत भवन">
+        <div class="overlay">
+          <p class="eyebrow">हमारा संकल्प, हमारा विकास</p>
+          <h1>स्वच्छ ग्राम, समृद्ध ग्राम</h1>
+          <p class="desc">ग्राम पंचायत परासी चकलाल के आधिकारिक वेबसाइट पर आपका हार्दिक स्वागत है। पारदर्शी प्रशासन और जनकल्याण हमारा उद्देश्य है।</p>
+          <button class="btn" onclick="showPage('about')">और अधिक जानें →</button>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="icon">👨‍👩‍👧‍👦</div><div class="num">5,200+</div><div class="lbl">कुल जनसंख्या (लगभग)</div></div>
+        <div class="stat-card"><div class="icon">🏠</div><div class="num">1,250+</div><div class="lbl">कुल परिवार (लगभग)</div></div>
+        <div class="stat-card"><div class="icon">🗂️</div><div class="num">15</div><div class="lbl">कुल वार्ड</div></div>
+        <div class="stat-card"><div class="icon">📅</div><div class="num">1950</div><div class="lbl">स्थापना वर्ष से सेवा में</div></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="panel">
+        <h3>📢 नोटिस बोर्ड</h3>
+        <div class="notice-item"><span>ग्राम सभा की बैठक दिनांक 25 अगस्त 2026 को समय 11:00 बजे <span class="tag">NEW</span></span><span class="notice-date">20/08/2026</span></div>
+        <div class="notice-item"><span>प्रधानमंत्री आवास योजना के लिए आवेदन प्रारंभ <span class="tag">NEW</span></span><span class="notice-date">18/08/2026</span></div>
+        <div class="notice-item"><span>नल जल योजना का कार्य प्रगति पर है <span class="tag">NEW</span></span><span class="notice-date">16/08/2026</span></div>
+        <div class="notice-item"><span>राशन कार्ड संशोधन एवं नए आवेदन के लिए संपर्क करें <span class="tag">NEW</span></span><span class="notice-date">15/08/2026</span></div>
+        <button class="btn outline" style="margin-top:14px;" onclick="showPage('notices')">सभी सूचनाऐं देखें →</button>
+      </div>
+      <div class="panel">
+        <h3>🎯 हमारी प्रमुख योजनाऐं</h3>
+        <div class="scheme-grid">
+          <div class="scheme-item">🏠 प्रधानमंत्री आवास योजना</div>
+          <div class="scheme-item">🚿 स्वच्छ भारत मिशन</div>
+          <div class="scheme-item">💧 नल जल जीवन मिशन</div>
+          <div class="scheme-item">🌾 मनरेगा योजना</div>
+          <div class="scheme-item">👴 पेंशन योजना</div>
+          <div class="scheme-item">🔥 उज्ज्वला योजना</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PAGE -->
+  <section class="page" id="page-about">
+    <h2 class="section-title">ग्राम पंचायत के बारे में</h2>
+    <div class="section-divider"></div>
+
+    <div class="about-hero">
+      <div class="content">
+        <h3>परिचय</h3>
+        <p>ग्राम पंचायत परासी चकलाल, तहसील सलेमपुर, जनपद देवरिया (उत्तर प्रदेश) की एक सक्रिय और प्रगतिशील पंचायत है। हमारा उद्देश्य ग्रामवासियों के सर्वांगीण विकास, पारदर्शी प्रशासन और जनकल्याणकारी योजनाओं को प्रभावी रूप से लागू करना है।</p>
+        <p>हमारी पंचायत शिक्षा, स्वच्छता, स्वास्थ्य, पेयजल, सड़क, रोजगार और डिजिटल सेवाओं के क्षेत्र में निरंतर कार्यरत है ताकि ग्रामवासी आत्मनिर्भर और सशक्त बन सकें।</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=800&q=80" alt="पंचायत भवन">
+    </div>
+
+    <div class="two-col" style="margin-top:0;">
+      <div class="panel">
+        <h3>🏛️ पंचायत की मुख्य जानकारी</h3>
+        <table class="info-table">
+          <tr><td>पंचायत का नाम</td><td>ग्राम पंचायत परासी चकलाल</td></tr>
+          <tr><td>तहसील</td><td>सलेमपुर</td></tr>
+          <tr><td>जनपद</td><td>देवरिया</td></tr>
+          <tr><td>राज्य</td><td>उत्तर प्रदेश</td></tr>
+          <tr><td>स्थापना वर्ष</td><td>1950</td></tr>
+          <tr><td>ग्राम सभा</td><td>परासी चकलाल</td></tr>
+          <tr><td>कुल वार्ड</td><td>15</td></tr>
+          <tr><td>कुल परिवार</td><td>1,250+</td></tr>
+          <tr><td>कुल जनसंख्या</td><td>5,200+ (लगभग)</td></tr>
+          <tr><td>क्षेत्रफल</td><td>2560 हैक्टेयर (लगभग)</td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h3>✅ हमारा उद्देश्य</h3>
+        <ul class="check-list">
+          <li>ग्रामवासियों को मूलभूत सुविधाऐं उपलब्ध कराना</li>
+          <li>पारदर्शी एवं जवाबदेह पंचायत प्रशासन</li>
+          <li>स्वच्छ, स्वस्थ और शिक्षित ग्राम का निर्माण</li>
+          <li>रोजगार के अवसर बढ़ाना एवं आत्मनिर्भर बनाना</li>
+          <li>सरकारी योजनाओं का शत-प्रतिशत लाभ दिलाना</li>
+          <li>प्राकृतिक संसाधनों का संरक्षण करना</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="text-align:center; color:var(--green-dark); margin:44px 0 22px;">🏛️ हमारे प्रमुख क्षेत्र</h3>
+    <div class="area-grid">
+      <div class="area-card"><div class="icon">📖</div><div class="lbl">शिक्षा</div></div>
+      <div class="area-card"><div class="icon">➕</div><div class="lbl">स्वास्थ्य</div></div>
+      <div class="area-card"><div class="icon">🚰</div><div class="lbl">पेयजल</div></div>
+      <div class="area-card"><div class="icon">🧹</div><div class="lbl">स्वच्छता</div></div>
+      <div class="area-card"><div class="icon">🛣️</div><div class="lbl">सड़क एवं परिवहन</div></div>
+      <div class="area-card"><div class="icon">💼</div><div class="lbl">रोजगार</div></div>
+    </div>
+
+    <div class="achieve-strip">
+      <div class="title">🏆 हमारी उपलब्धियाँ</div>
+      <div class="achieve-items">
+        <div class="achieve-item"><span class="aicon">🧹</span> स्वच्छता अभियान में उत्कृष्ट कार्य</div>
+        <div class="achieve-item"><span class="aicon">💧</span> नल जल योजना में प्रगति</div>
+        <div class="achieve-item"><span class="aicon">🏠</span> आवास योजना के लाभार्थियों को लाभ</div>
+        <div class="achieve-item"><span class="aicon">🗣️</span> ग्राम सभा बैठकों का नियमित आयोजन</div>
+        <div class="achieve-item"><span class="aicon">💻</span> पारदर्शी एवं डिजिटल पंचायत सेवाऐं</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPRESENTATIVES PAGE -->
+  <section class="page" id="page-reps">
+    <h2 class="section-title">जनप्रतिनिधि</h2>
+    <div class="section-divider"></div>
+    <p style="text-align:center; color:var(--muted); margin-top:-20px; margin-bottom:30px;">ग्राम पंचायत परासी चकलाल के निर्वाचित जनप्रतिनिधियों की जानकारी</p>
+
+    <h4 style="color:var(--green-dark); margin-bottom:16px;">🟢 मुख्य जनप्रतिनिधि</h4>
+    <div class="rep-main-grid">
+      <div class="rep-card">
+        <div class="rep-avatar">👨</div>
+        <div class="rep-role">ग्राम प्रधान</div>
+        <div class="rep-name">रामप्रवेश यादव</div>
+        <div class="rep-contact"><span>📞 9565174789</span><span>✉️ rampravesh@gmail.com</span><span>📍 परासी चकलाल</span></div>
+      </div>
+      <div class="rep-card">
+        <div class="rep-avatar">👨</div>
+        <div class="rep-role">ग्राम सचिव</div>
+        <div class="rep-name">अनिल कुमार</div>
+        <div class="rep-contact"><span>📞 9450123456</span><span>✉️ anilkumar@gov.in</span><span>📍 परासी चकलाल</span></div>
+      </div>
+      <div class="rep-card">
+        <div class="rep-avatar">👩</div>
+        <div class="rep-role">पंचायत सहायक</div>
+        <div class="rep-name">सीमा देवी</div>
+        <div class="rep-contact"><span>📞 9456789012</span><span>✉️ seemadevi@gov.in</span><span>📍 परासी चकलाल</span></div>
+      </div>
+      <div class="rep-card">
+        <div class="rep-avatar">👨</div>
+        <div class="rep-role">रोजगार सेवक</div>
+        <div class="rep-name">राजेश कुमार</div>
+        <div class="rep-contact"><span>📞 9456789123</span><span>✉️ rajeshkumar@gov.in</span><span>📍 परासी चकलाल</span></div>
+      </div>
+    </div>
+
+    <h4 style="color:var(--green-dark); margin-bottom:16px;">🟢 वार्ड सदस्य</h4>
+    <div class="ward-grid" id="wardGrid"></div>
+
+    <h4 style="color:var(--green-dark); margin-bottom:16px;">🟢 स्थायी समितियाँ</h4>
+    <table class="committee">
+      <tr><th>समिति का नाम</th><th>अध्यक्ष</th><th>सदस्य</th></tr>
+      <tr><td>शिक्षा समिति</td><td>सरिता देवी (वार्ड 1)</td><td>5</td></tr>
+      <tr><td>स्वास्थ्य समिति</td><td>कुसुम लता (वार्ड 3)</td><td>5</td></tr>
+      <tr><td>निर्माण समिति</td><td>अजय कुमार (वार्ड 4)</td><td>5</td></tr>
+      <tr><td>वित्त समिति</td><td>विनोद यादव (वार्ड 2)</td><td>5</td></tr>
+      <tr><td>सामाजिक न्याय समिति</td><td>मीना देवी (वार्ड 6)</td><td>5</td></tr>
+    </table>
+  </section>
+
+  <!-- NOTICES PAGE -->
+  <section class="page" id="page-notices">
+    <h2 class="section-title">सूचनाऐं</h2>
+    <div class="section-divider"></div>
+    <div class="panel">
+      <div class="notice-item"><span>ग्राम सभा की बैठक दिनांक 25 अगस्त 2026 को समय 11:00 बजे <span class="tag">NEW</span></span><span class="notice-date">20/08/2026</span></div>
+      <div class="notice-item"><span>प्रधानमंत्री आवास योजना के लिए आवेदन प्रारंभ <span class="tag">NEW</span></span><span class="notice-date">18/08/2026</span></div>
+      <div class="notice-item"><span>नल जल योजना का कार्य प्रगति पर है <span class="tag">NEW</span></span><span class="notice-date">16/08/2026</span></div>
+      <div class="notice-item"><span>राशन कार्ड संशोधन एवं नए आवेदन के लिए संपर्क करें <span class="tag">NEW</span></span><span class="notice-date">15/08/2026</span></div>
+      <div class="notice-item"><span>जन्म एवं मृत्यु प्रमाण पत्र हेतु शिविर का आयोजन</span><span class="notice-date">10/08/2026</span></div>
+      <div class="notice-item"><span>स्वच्छता ही सेवा अभियान 2026 में सक्रिय सहभागिता का अनुरोध</span><span class="notice-date">05/08/2026</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT PAGE -->
+  <section class="page" id="page-contact">
+    <h2 class="section-title">संपर्क करें</h2>
+    <div class="section-divider"></div>
+    <p style="text-align:center; color:var(--muted); margin-top:-20px; margin-bottom:30px;">हमसे संपर्क करने के लिए नीचे दी गई जानकारी का उपयोग करें</p>
+
+    <div class="contact-grid">
+      <div class="panel">
+        <h3 style="margin-bottom:6px;">हमसे जुड़ने के विभिन्न माध्यम</h3>
+        <ul class="contact-list">
+          <li><span class="cicon">📍</span><span><span class="clabel">पता</span><span class="cval">ग्राम पंचायत परासी चकलाल, तहसील सलेमपुर, जनपद देवरिया, उत्तर प्रदेश - 274207</span></span></li>
+          <li><span class="cicon">📞</span><span><span class="clabel">मोबाइल नंबर</span><span class="cval">9565174789</span></span></li>
+          <li><span class="cicon">✉️</span><span><span class="clabel">ईमेल आईडी</span><span class="cval">gpparasi@gmail.com</span></span></li>
+          <li><span class="cicon">🕐</span><span><span class="clabel">कार्यालय समय</span><span class="cval">प्रातः 10:00 से सायं 05:00 बजे तक (सोमवार से शनिवार)</span></span></li>
+          <li><span class="cicon">📅</span><span><span class="clabel">ग्राम सभा बैठक</span><span class="cval">प्रत्येक माह के अंतिम रविवार समय प्रातः 11:00 बजे</span></span></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>हमारा स्थान</h3>
+        <div class="map-box"><span>परासी चकलाल, सलेमपुर, देवरिया</span></div>
+        <img src="https://images.unsplash.com/photo-1595854341625-f33e32bc3b8c?w=600&q=80" style="border-radius:10px;" alt="ग्राम पंचायत भवन">
+      </div>
+
+      <div class="panel">
+        <h3>हमें संदेश भेजें</h3>
+        <form onsubmit="event.preventDefault(); alert('धन्यवाद! आपका संदेश प्राप्त हो गया है।'); this.reset();">
+          <div class="field"><label>आपका नाम *</label><input type="text" required></div>
+          <div class="field"><label>मोबाइल नंबर *</label><input type="tel" required></div>
+          <div class="field"><label>ईमेल आईडी</label><input type="email"></div>
+          <div class="field"><label>विषय</label><input type="text"></div>
+          <div class="field"><label>आपका संदेश लिखें...</label><textarea></textarea></div>
+          <div class="field captcha-row">
+            <div class="captcha-box">7K3P</div>
+            <input type="text" placeholder="कैप्चा कोड डालें" style="flex:1;">
+          </div>
+          <button class="btn" type="submit" style="width:100%; justify-content:center;">📩 संदेश भेजें</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-circle">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="sun" cx="74" cy="20" r="9"/>
+          <g class="sun" stroke="currentColor" stroke-width="2">
+            <line x1="74" y1="4" x2="74" y2="9"/>
+            <line x1="90" y1="20" x2="85" y2="20"/>
+            <line x1="86.5" y1="8" x2="83" y2="11.5"/>
+          </g>
+          <path class="water" d="M6,86 Q17,80 28,86 T50,86 T72,86 T94,86" fill="none" stroke-width="3" stroke-linecap="round"/>
+          <line class="ground" x1="4" y1="92" x2="96" y2="92" stroke-width="2"/>
+          <polygon class="roof" points="54,58 68,42 82,58"/>
+          <rect class="wall" x="58" y="58" width="20" height="18" rx="1"/>
+          <rect class="wall" x="66" y="66" width="6" height="10"/>
+          <rect class="trunk" x="20" y="54" width="6" height="24"/>
+          <circle class="leaf" cx="23" cy="44" r="14"/>
+          <circle class="leaf" cx="13" cy="52" r="10"/>
+          <circle class="leaf" cx="33" cy="52" r="10"/>
+        </svg>
+      </div>
+      <div>
+        <h4>ग्राम पंचायत परासी चकलाल</h4>
+        <p>स्वच्छ ग्राम, स्वस्थ ग्राम, समृद्ध ग्राम<br>हमारा संकल्प, हमारा विकास</p>
+        <div class="social-row">
+          <a href="#">📘</a><a href="#">💬</a><a href="#">🐦</a><a href="#">▶️</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h5>त्वरित लिंक</h5>
+      <ul>
+        <li><a href="#" data-page="home">होम</a></li>
+        <li><a href="#" data-page="about">ग्राम पंचायत के बारे में</a></li>
+        <li><a href="#" data-page="reps">जनप्रतिनिधि</a></li>
+        <li><a href="#" data-page="notices">सूचनाऐं</a></li>
+        <li><a href="#" data-page="contact">संपर्क करें</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>महत्वपूर्ण सेवाऐं</h5>
+      <ul>
+        <li>जन्म प्रमाण पत्र आवेदन</li>
+        <li>मृत्यु प्रमाण पत्र आवेदन</li>
+        <li>आवास योजना</li>
+        <li>पेंशन योजना</li>
+        <li>शिकायत दर्ज करें</li>
+      </ul>
+    </div>
+    <div>
+      <h5>हमारी जानकारी</h5>
+      <ul>
+        <li>📍 ग्राम पंचायत परासी चकलाल, तहसील सलेमपुर, जनपद देवरिया, उत्तर प्रदेश</li>
+        <li>📞 9565174789</li>
+        <li>✉️ gpparasi@gmail.com</li>
+        <li>🕐 कार्यालय समय: प्रातः 10:00 से सायं 05:00 बजे तक</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 ग्राम पंचायत परासी चकलाल | सभी अधिकार सुरक्षित | Developed with ❤️ for our village</div>
+</footer>
+
+<div class="whatsapp-fab">💬</div>
+
+<script>
+  const wards = [
+    ["1","सरिता देवी","9456001111"], ["2","विनोद यादव","9456001112"],
+    ["3","कुसुम लता","9456001113"], ["4","अजय कुमार","9456001114"],
+    ["5","सुभाष दूबे","9456001115"], ["6","मीना देवी","9456001116"],
+    ["7","धर्मेन्द्र यादव","9456001117"], ["8","पूजा देवी","9456001118"],
+    ["9","मनीष कुमार","9456001119"], ["10","कमला देवी","9456001120"],
+    ["11","राकेश कुमार","9456001121"], ["12","गीता देवी","9456001122"]
+  ];
+  const avatars = ["👩","👨"];
+  const wardGrid = document.getElementById('wardGrid');
+  wards.forEach(([no,name,phone],i)=>{
+    const div = document.createElement('div');
+    div.className='ward-card';
+    div.innerHTML = `<div class="ward-avatar">${avatars[i%2]}</div>
+      <div><div class="ward-no">वार्ड ${no}</div><div class="ward-name">${name}</div><div class="ward-phone">📞 ${phone}</div></div>`;
+    wardGrid.appendChild(div);
+  });
+
+  const pageTitles = {home:"होम", about:"ग्राम पंचायत के बारे में", reps:"जनप्रतिनिधि", notices:"सूचनाऐं", contact:"संपर्क करें"};
+
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-'+id).classList.add('active');
+    document.querySelectorAll('nav.primary a').forEach(a=>a.classList.toggle('active', a.dataset.page===id));
+    const crumbCurrent = document.getElementById('crumbCurrent');
+    const crumbSep = document.getElementById('crumbSep');
+    if(id==='home'){ crumbCurrent.textContent=''; crumbSep.style.display='none'; }
+    else { crumbCurrent.textContent = pageTitles[id]; crumbSep.style.display='inline'; }
+    document.getElementById('primaryNav').classList.remove('open');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.querySelectorAll('[data-page]').forEach(el=>{
+    el.addEventListener('click', (e)=>{ e.preventDefault(); showPage(el.dataset.page); });
+  });
+
+  document.getElementById('menuToggle').addEventListener('click', ()=>{
+    document.getElementById('primaryNav').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
